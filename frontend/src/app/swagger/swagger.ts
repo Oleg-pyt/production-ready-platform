@@ -1,16 +1,18 @@
-import { Component, AfterViewInit } from '@angular/core';
-import SwaggerUI from 'swagger-ui';
+import { Component } from '@angular/core';
 
+/**
+ * Swagger UI is served by the backend via springdoc-openapi.
+ * Navigate to /swagger-ui.html or /swagger-ui/index.html on the backend.
+ *
+ * This component can embed it via an iframe if needed.
+ */
 @Component({
   selector: 'app-swagger',
-  template: '<div id="swagger-ui"></div>'
+  template: `
+    <iframe
+      src="http://localhost:8080/swagger-ui/index.html"
+      style="width:100%; height:100vh; border:none;">
+    </iframe>
+  `
 })
-export class SwaggerComponent implements AfterViewInit {
-
-  ngAfterViewInit(): void {
-    SwaggerUI({
-      dom_id: '#swagger-ui',
-      url: 'http://localhost:8080/v3/api-docs', // Swagger endpoint backend
-    });
-  }
-}
+export class SwaggerComponent {}

@@ -3,24 +3,44 @@
 # Ignore folders in all depths
 
 ################################
-**/.idea/
-**/target/
-**/.generated/
-**/.angular/
-**/dist/
-**/node_modules/
+**/.idea
+**/target
+**/.generated
+**/.angular
+**/dist
+**/node_modules
+**/.git
 
 ################################
 
-# Default Java files
+# Java build files
 
 ################################
 **/*.class
-**/*.log
 **/*.jar
 **/*.war
 **/*.ear
 **/*.nar
+**/*.log
+
+# Allow the backend fat-jar produced by the root Maven build
+!backend/target/backend-*.jar
+
+################################
+
+# Logs
+
+################################
+**/logs
+**/*.log
+
+################################
+
+# Environment
+
+################################
+**/.env
+**/.env.*
 
 ################################
 
@@ -36,20 +56,4 @@
 
 ################################
 **/*.iml
-**/.vscode/
-
-################################
-
-# Environment
-
-################################
-**/.env
-**/.env.*
-
-################################
-
-# Logs
-
-################################
-**/logs/
-**/*.log
+**/.vscode

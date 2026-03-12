@@ -1,15 +1,23 @@
 package com.benatti.backend.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import com.benatti.api.generated.api.HealthApi;
+import com.benatti.api.generated.model.HealthResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
+/**
+ * Implements the generated HealthApi interface from api-java module.
+ * The interface is generated from api/swagger.json by openapi-generator.
+ * Override any default methods here to provide custom behavior.
+ */
 @RestController
-public class HealthController {
+public class HealthController implements HealthApi {
 
-    @GetMapping("/api/health")
-    public Map<String, String> health() {
-        return Map.of("status", "UP");
+    @Override
+    public ResponseEntity<HealthResponse> getHealth() {
+        HealthResponse response = new HealthResponse();
+        response.setStatus("UP");
+        return ResponseEntity.ok(response);
     }
 }
+

@@ -27,8 +27,6 @@
     "@angular/platform-browser": "^20.1.0",
     "@angular/router": "^20.1.0",
     "rxjs": "~7.8.0",
-    "swagger-ui": "^5.32.0",
-    "swagger-ui-dist": "^5.32.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
@@ -37,7 +35,6 @@
     "@angular/cli": "^20.1.1",
     "@angular/compiler-cli": "^20.1.0",
     "@types/jasmine": "~5.1.0",
-    "@types/swagger-ui": "^5.21.1",
     "jasmine-core": "~5.8.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

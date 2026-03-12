@@ -79,7 +79,7 @@
             <configuration>
               <installDirectory>${project.build.directory}</installDirectory>
               <workingDirectory>${project.build.directory}/generated-api</workingDirectory>
-              <arguments>${npm.install.command}</arguments>
+              <arguments>install</arguments>
             </configuration>
           </execution>
           <execution>

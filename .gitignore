@@ -43,8 +43,12 @@
 # Environment
 
 ################################
-**/.env
-**/.env.*
+.env
+.env.local
+.env.*.local
+
+# Allow example/template env file
+!.env.example
 
 ################################
 

@@ -1,5 +1,8 @@
 # DevOps-Ready Platform
 
+[![CI Build](https://github.com/benatti-io/production-ready-platform/actions/workflows/ci.yml/badge.svg)](https://github.com/benatti-io/production-ready-platform/actions/workflows/ci.yml)
+[![Docker Publish](https://github.com/benatti-io/production-ready-platform/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/benatti-io/production-ready-platform/actions/workflows/docker-publish.yml)
+
 ## Build architecture
 
 ```
@@ -17,6 +20,15 @@ The JAR includes: Spring Boot backend + Angular SPA + generated API interfaces.
 
 ## Run via Docker (production)
 
+### Setup environment
+```bash
+# Copy the example environment file
+cp .env.example .env
+
+# Adjust values if needed (default values work for local Docker)
+```
+
+### Start services
 ```bash
 # 1. Build (once, or after any changes)
 mvn -f pom.xml -DskipTests package
@@ -30,11 +42,30 @@ Available endpoints:
 |-----|-------------|
 | `http://localhost:8080/` | Angular SPA |
 | `http://localhost:8080/api/health` | Health check |
-| `http://localhost:8080/swagger-ui/index.html` | Swagger UI |
 
 ---
 
-## Local development
+## Environment Configuration
+
+The project uses `.env` files for configuration:
+
+- **`.env.example`** — Template with all available variables (committed to git)
+- **`.env`** — Local configuration (ignored by git, use for secrets)
+
+### Setup for development or Docker
+
+```bash
+cp .env.example .env
+```
+
+Default values work for local Docker setup. For production, update:
+- `POSTGRES_PASSWORD` — Use a strong password
+- `SPRING_PROFILES_ACTIVE` — Set to `prod`
+- `LOGGING_LEVEL_ROOT` — Set to `WARN`
+
+---
+
+## Available endpoints
 
 ### PostgreSQL
 ```bash

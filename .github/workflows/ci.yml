@@ -1,0 +1,48 @@
+name: CI Build
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        java-version: [ '25' ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java-version }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java-version }}
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven (CI profile)
+        run: mvn -f pom.xml -P ci -DskipTests clean package
+
+      - name: Run tests
+        run: mvn -f pom.xml verify
+
+      - name: Upload build artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maven-logs
+          path: '**/target/surefire-reports/'
+          retention-days: 30
+
+      - name: Build Docker image (without push)
+        run: docker build -t production-ready-platform:${{ github.sha }} .
+

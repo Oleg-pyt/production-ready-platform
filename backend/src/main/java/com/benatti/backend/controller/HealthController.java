@@ -1,7 +1,7 @@
 package com.benatti.backend.controller;
 
-import com.benatti.api.generated.api.HealthApi;
-import com.benatti.api.generated.model.HealthResponse;
+import com.benatti.api.HealthApi;
+import com.benatti.api.model.HealthResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

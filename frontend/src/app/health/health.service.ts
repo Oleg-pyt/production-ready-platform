@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HealthResponse, HealthApi } from 'api';
+import { HealthResponse, HealthService as HealthApiService } from 'api';
 
 /**
  * HealthService wraps the generated DefaultService from the `api` npm package.
@@ -12,7 +12,7 @@ import { HealthResponse, HealthApi } from 'api';
  */
 @Injectable({ providedIn: 'root' })
 export class HealthService {
-  constructor(private api: HealthApi) {}
+  constructor(private api: HealthApiService) {}
 
   check(): Observable<HealthResponse> {
     return this.api.getHealth();
